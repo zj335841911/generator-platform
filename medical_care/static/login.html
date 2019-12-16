@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no" />
+  	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0"> 
+    <title>共享牛会员注册</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/swiper-3.4.2.min.css">
+    <link rel="stylesheet" href="css/common.css">
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/setFontSize.js"></script>
+    <link rel="stylesheet" href="css/lhPhone.css">
+    <link rel="stylesheet" href="css/daili.css">
+    <link rel="stylesheet" href="css/fx.css">
+  </head>
+  <body>
+
+    <div class="container-fluid">
+    
+    <!-- header -->
+      <header id="header_box">
+       <div id="header">
+          <div class="header_box">
+            <img class="logo_img" src="images/logo.png" alt="logo_img">
+            <div class="logo_text">
+              <h2 class="size-30 color-555 no-margin">共享牛</h2>
+              <span class="size-20 color-999">共享牛、发需求，一发就知有多牛！</span>
+            </div>
+          </div>
+          <img class="menu_img menu" src="images/menu.png" alt="menu_img">
+          <img class="menu_close_img menu hide" src="images/menu_close.png" alt="">
+        </div>
+
+
+      </header>
+    
+
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <form action="login.php" method="post"  onsubmit="return submitForm(this)">
+        <div id="d_hz" class="d_hz" style="padding-top:1rem;">
+        	<div class="d_hz_t size-40 color-333 text-center">共享牛会员登录</div>
+            
+            
+           <div class="d_hz_info">
+              <input  name="mobile" class="d_hz_info_input size-30 i2" type="tel" placeholder="手机号">
+          </div>  
+          
+ <div class="d_hz_info">
+              <input  name="password" class="d_hz_info_input size-30 i5" type="password" placeholder="请输入您的密码">
+          </div> 
+                               
+          
+          <button type="submit" class="d_hz_info_btn text-center size-30">登录</button>
+          
+        </div>
+      </form>
+      
+
+     
+
+    <div class="emptyBox"></div>
+
+    <!-- 返回顶部按钮 -->
+      <div class="backTop radius-50 hide" onclick="backTop()">
+        <img src="images/scrolltop.png" alt="">
+      </div>
+
+    </div>
+
+<!-- 页脚导航 -->
+<ul class="foot clearfix txt-center bg-white foot_nav">
+	<li class="cur"><a href="index.html"><i class="iconfont f48">&#xe60e;</i><span>首页</span></a></li>
+	<li><a href="#"><i class="iconfont f48">&#xe617;</i><span>资讯</span></a></li>
+	<li><a href="#"><i class="iconfont f48">&#xe601;</i><span>发布</span></a></li>
+    <li><a href="#"><i class="iconfont f48">&#xe62b;</i><span>共享</span></a></li>
+	<li><a href="#"><i class="iconfont f48">&#xe619;</i><span>我的</span></a></li>
+</ul>	
+    
+
+
+  <!-- 侧边导航 -->
+    <aside id="menu_box" class="hide"  style="top: 1.2rem">
+
+      <ul class="menu_list">
+        <li>
+          <a href="#">
+            <span class="glyphicon glyphicon-pencil"></span>
+            注册
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="glyphicon glyphicon-user"></span>
+            登录 
+          </a>     
+        </li>
+       
+      </ul>
+    </aside> 
+
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/swiper-3.4.2.min.js"></script>
+    <script src="js/common.js"></script>
+   
+    
+    <script>
+
+      // 调用导航相关事件
+      menuFunc();
+
+    </script>
+    <script src="js/toast.js"></script>
+
+    <script>
+
+      // 表单事件
+      function submitForm(o) {     
+	  var code_gg = $("#code_gg").val();
+        if (!o.mobile.value.match(/^1\d{10}$/)) {
+          showToast('手机号格式错误','bottom');
+          return false;
+        }
+        
+		
+		if(isNull(o.password.value)){
+				showToast('请输入密码','bottom');
+				return false;
+		}	
+		
+			
+			
+		
+
+		$(o).attr("v",1);
+		$.post(o.action,$(o).serialize(),function(r){
+		    cache:false,	
+			$(o).attr("v",0);
+			showToast(r.msg,'bottom');
+			if(r.state==1){o.reset(); alert("ok");}
+		},"json");
+		return false;
+
+
+		
+
+
+      }
+
+    </script>
+
+  </body>
+</html>

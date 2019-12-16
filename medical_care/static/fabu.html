@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no" />
+  	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>共享牛会员注册</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/swiper-3.4.2.min.css">
+    <link rel="stylesheet" href="css/common.css">
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/setFontSize.js"></script>
+    <link rel="stylesheet" href="css/lhPhone.css">
+    <link rel="stylesheet" href="css/daili.css">
+    <link rel="stylesheet" href="css/fx.css">
+  </head>
+  <body>
+
+    <div class="container-fluid">
+    
+    <!-- header -->
+      <header id="header_box">
+       <div id="header">
+          <div class="header_box">
+            <img class="logo_img" src="images/logo.png" alt="logo_img">
+            <div class="logo_text">
+              <h2 class="size-30 color-555 no-margin">共享牛</h2>
+              <span class="size-20 color-999">共享牛、发需求，一发就知有多牛！</span>
+            </div>
+          </div>
+          <img class="menu_img menu" src="images/menu.png" alt="menu_img">
+          <img class="menu_close_img menu hide" src="images/menu_close.png" alt="">
+        </div>
+
+
+      </header>
+    
+
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <form action="../ajax.asp?w=report" method="post"  onsubmit="return submitForm(this)">
+        <div id="d_hz" class="d_hz" style="padding-top:2rem;">
+            
+            
+           <div class="d_hz_info">
+              <input  name="mobile" class="fb_input size-30" type="tel" placeholder="例如我需要：建站、设计、推广">
+          </div>
+           <div class="d_up_d">
+
+<div class="demo clearfix">
+      <ul id="ul_pics" class="ul_pics clearfix">
+
+
+<div class="jia"><img src="images/add.png" id="btn" class="img_common" /></div>
+               
+            </ul>
+        </div>	  
+
+          </div>
+            
+          
+          <div class="d_hz_info">
+              <textarea name="textarea" class="fb_txt"  onkeyup='textAreaChange(this)' onkeydown='textAreaChange(this)'>1、需求主题是什么？
+2、价格预算是多少？
+3、需求要求有什么？</textarea>
+           <div class='text-right'>
+                <em style='color:red'>200</em>/<span>200</span>
+            </div>
+
+          </div> 
+                               
+          
+          <button type="submit" class="d_hz_info_btn text-center size-30">立即发布</button>
+        </div>
+      </form>
+      
+
+     <div class="emptyBox"></div>
+
+    
+
+    <!-- 返回顶部按钮 -->
+      <div class="backTop radius-50 hide" onclick="backTop()">
+        <img src="images/scrolltop.png" alt="">
+      </div>
+
+    </div>
+
+<!-- 页脚导航 -->
+<ul class="foot clearfix txt-center bg-white foot_nav">
+	<li class="cur"><a href="index.html"><i class="iconfont f48">&#xe60e;</i><span>首页</span></a></li>
+	<li><a href="#"><i class="iconfont f48">&#xe617;</i><span>资讯</span></a></li>
+	<li><a href="#"><i class="iconfont f48">&#xe601;</i><span>发布</span></a></li>
+    <li><a href="#"><i class="iconfont f48">&#xe62b;</i><span>共享</span></a></li>
+	<li><a href="#"><i class="iconfont f48">&#xe619;</i><span>我的</span></a></li>
+</ul>	
+    
+
+
+  <!-- 侧边导航 -->
+    <aside id="menu_box" class="hide"  style="top: 1.2rem">
+
+      <ul class="menu_list">
+        <li>
+          <a href="#">
+            <span class="glyphicon glyphicon-pencil"></span>
+            注册
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="glyphicon glyphicon-user"></span>
+            登录 
+          </a>     
+        </li>
+       
+      </ul>
+    </aside> 
+
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/swiper-3.4.2.min.js"></script>
+    <script src="js/common.js"></script>
+    
+    <script>
+
+      // 调用导航相关事件
+      menuFunc();
+
+    </script>
+    <script src="js/toast.js"></script>
+
+    <script>
+
+      // 表单事件
+      function submitForm(o) {     
+	  var code_gg = $("#code_gg").val();
+        if (!o.mobile.value.match(/^1\d{10}$/)) {
+          showToast('手机号格式错误','bottom');
+          return false;
+        }
+        
+		
+		if(isNull(o.password.value)){
+				showToast('请输入密码','bottom');
+				return false;
+		}	
+		
+			
+			
+		
+
+		
+			
+
+		
+
+
+      }
+
+    </script>
+<script type="text/javascript">
+    //显示限制输入字符method
+    function textAreaChange(obj){
+        var $this = $(obj);
+        var count_total = $this.next().children('span').text();
+        var count_input = $this.next().children('em');
+        var area_val = $this.val();
+        if(area_val.len()>count_total){
+            area_val = autoAddEllipsis(area_val,count_total);//根据字节截图内容
+            $this.val(area_val);
+            count_input.text(0);//显示可输入数
+        }else{
+            count_input.text(count_total - area_val.len());//显示可输入数
+        }
+    }
+    //得到字符串的字节长度
+    String.prototype.len = function(){
+        return this.replace(/[^\x00-\xff]/g, "xx").length;
+    };
+    /*
+     * 处理过长的字符串，截取并添加省略号
+     * 注：半角长度为1，全角长度为2
+     * pStr:字符串
+     * pLen:截取长度
+     * return: 截取后的字符串
+     */
+    function autoAddEllipsis(pStr, pLen) {
+        var _ret = cutString(pStr, pLen);
+        var _cutFlag = _ret.cutflag;
+        var _cutStringn = _ret.cutstring;
+        return _cutStringn;
+    }
+    /*
+     * 取得指定长度的字符串
+     * 注：半角长度为1，全角长度为2
+     * pStr:字符串
+     * pLen:截取长度
+     * return: 截取后的字符串
+     */
+    function cutString(pStr, pLen) {
+        // 原字符串长度
+        var _strLen = pStr.length;
+        var _tmpCode;
+        var _cutString;
+        // 默认情况下，返回的字符串是原字符串的一部分
+        var _cutFlag = "1";
+        var _lenCount = 0;
+        var _ret = false;
+        if (_strLen <= pLen/2){_cutString = pStr;_ret = true;}
+        if (!_ret){
+            for (var i = 0; i < _strLen ; i++ ){
+                if (isFull(pStr.charAt(i))){_lenCount += 2;}
+                else {_lenCount += 1;}
+                if (_lenCount > pLen){_cutString = pStr.substring(0, i);_ret = true;break;}
+                else if(_lenCount == pLen){_cutString = pStr.substring(0, i + 1);_ret = true;break;}
+            }
+        }
+        if (!_ret){_cutString = pStr;_ret = true;}
+        if (_cutString.length == _strLen){_cutFlag = "0";}
+        return {"cutstring":_cutString, "cutflag":_cutFlag};
+    }
+    /*
+     * 判断是否为全角
+     *
+     * pChar:长度为1的字符串
+     * return: true:全角
+     *         false:半角
+     */
+    function isFull (pChar){
+        if((pChar.charCodeAt(0) > 128)){return true;}
+        else{return false;}
+    }
+</script>
+
+<script type="text/javascript" src="plupload/plupload.full.min.js"></script>
+        <script type="text/javascript">
+		 
+            var uploader = new plupload.Uploader({//创建实例的构造方法
+                runtimes: 'html5,flash,silverlight,html4', //上传插件初始化选用那种方式的优先级顺序
+                browse_button: 'btn', // 上传按钮
+                url: "ajax.php", //远程上传地址
+                flash_swf_url: 'plupload/Moxie.swf', //flash文件地址
+                silverlight_xap_url: 'plupload/Moxie.xap', //silverlight文件地址
+                filters: {
+                    max_file_size: '10mb', //最大上传文件大小（格式100b, 10kb, 10mb, 1gb）
+                    mime_types: [//允许文件上传类型
+                        {title: "files", extensions: "jpg,png,gif,jpeg"}
+                    ]
+                },
+                multi_selection: true, //true:ctrl多文件上传, false 单文件上传
+                init: {
+                    FilesAdded: function(up, files) { //文件上传前
+                        if ($("#ul_pics").children("li").length >= 5) {
+                            alert("您上传的图片太多了！");
+                            uploader.destroy();
+                        } else {
+                            var li = '';
+                            plupload.each(files, function(file) { //遍历文件
+                                li += "<li id='" + file['id'] + "'><div class='progress'><span class='bar'></span><span class='percent'>0%</span></div></li>";
+                            });
+                            $("#ul_pics").prepend(li);
+                            uploader.start();
+                        }
+                    },
+                    UploadProgress: function(up, file) { //上传中，显示进度条
+					    
+                        var percent = file.percent;
+
+                        $("#" + file.id).find('.bar').css({"width": percent + "%"});
+                        $("#" + file.id).find(".percent").text(percent + "%");
+                    },
+                    FileUploaded: function(up, file, info) {  
+						//文件上传成功的时候触发
+                        var data = eval("(" + info.response + ")");   
+						//解析返回的json数据
+						if (data.status == true) {
+							$("#" + file.id).html("<input type='hidden'name='gallery[]' value='gallery/" + data.name + "'/><img class='img_common' onclick=delPic('" + data.del + "','" + file.id + "') src='" + data.pic + "'/><p><input type='button' value='上移' class='arrow-up'  /><input type='button' value='下移' class='arrow-down' /></p>");//追加图片
+						} else {
+							alert(data.name);
+							$("#" + file.id).remove();
+						}
+                    },
+                    Error: function(up, err) { //上传出错的时候触发
+                        alert(err.message);
+                    }
+                }
+            });
+            uploader.init();
+
+            function delPic(pic, file_id) { //删除图片 参数1图片路径  参数2 随机数
+                if (confirm("确定要删除吗？")) {
+                    $.post("del.php", {pic: pic}, function(data) {
+						if (data.status == true) {
+							$("#" + file_id).remove();
+						} else {
+							//alert('删除失败');
+							$("#" + file_id).remove();
+						}
+                    },'json');
+                }
+            }
+		 	
+        </script>   
+
+    
+
+  </body>
+</html>

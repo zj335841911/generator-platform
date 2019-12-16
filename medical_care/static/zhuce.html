@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no" />
+  	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>本鼎医疗用户注册</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/swiper-3.4.2.min.css">
+    <link rel="stylesheet" href="css/common.css">
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/setFontSize.js"></script>
+    <link rel="stylesheet" href="css/lhPhone.css">
+    <link rel="stylesheet" href="css/daili.css">
+    <link rel="stylesheet" href="css/fx.css">
+	<link rel="stylesheet" href="css/zc.css">
+  </head>
+  <body>
+
+<div class="form">
+<ul>
+	<li>手机号码<input data-v-5c45e634="" type="tel" name="" placeholder="请输入手机号" maxlength="11"></li>
+	<li>验证码　<button id="btn"  type="button" class="yd-btn yd-btn-warning" style="float: right; margin-top: 0.25rem;">获取验证码
+</button> <input  type="text" placeholder="请输入验证码" maxlength="6" style="width: 45%;" ></li>
+	<li><input id="ty" name="ty" type="checkbox"><label for="ty"></label><span>注册即同意《隐私协议》</span></li>
+</ul>
+<div class="login-btn">注册</div>
+
+</div>
+    
+
+
+
+
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/swiper-3.4.2.min.js"></script>
+    <script src="js/common.js"></script>
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+    
+    <script>
+
+      // 调用导航相关事件
+      menuFunc();
+
+    </script>
+    <script src="js/toast.js"></script>
+
+    <script>
+
+      // 表单事件
+      function submitForm(o) {     
+	  var code_gg = $("#code_gg").val();
+        if (!o.mobile.value.match(/^1\d{10}$/)) {
+          showToast('手机号格式错误','bottom');
+          return false;
+        }
+        if(isNull(o.cname.value)) {
+          showToast('昵称不能为空','bottom');
+          return false;
+        }	
+		
+		if(isNull(o.qq.value) && isNull(o.email.value) && isNull(o.weixin.value)){
+				showToast('QQ/邮箱/微信为空','bottom');
+				return false;
+		}	
+		
+		if (o.email.value != ''){		
+		
+		if (!o.email.value.match(/^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/)) {
+
+		   showToast('请填写正确的邮箱地址','bottom');
+           return false; 
+           } 
+
+			
+			}	
+		
+		
+		
+		
+		
+			if(isNull(o.password.value) && isNull(o.password2.value)){
+				showToast('密码及确认密码不能为空','bottom');
+				return false;
+		}	
+		
+			
+			if (o.password.value != o.password2.value){	
+			  showToast('两次输入的密码不一致','bottom');
+              return false; 
+			}
+			
+			var x=document.getElementById('ty');
+			
+			if(x.checked==false){
+				showToast('注册协议未勾选','bottom');
+				return false;
+			}	
+		
+
+		
+			
+
+		
+
+
+      }
+
+    </script>
+	
+<script type="text/javascript">
+        var oBtn = document.getElementById('btn');
+        var flag = true;
+
+        oBtn.addEventListener("click", function () {
+            var time = 60;
+            oBtn.classList.add('disable');
+            oBtn.innerText = '已发送';
+
+            if (flag) {
+                flag = false;
+                var timer = setInterval(() => {
+                    time--;
+                    oBtn.innerText = time + ' 秒';
+                    if (time === 0) {
+                        clearInterval(timer);
+                        oBtn.innerText = '重新获取';
+                        oBtn.classList.remove('disable');
+                        flag = true;
+                    }
+                }, 1000)
+            }
+        });
+
+    </script>	
+	
+	
+
+
+  </body>
+</html>

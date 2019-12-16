@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/axios.min.js"></script>
+    <script type="text/javascript" src="js/vue.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+    const appid="wx84292969859bf486";
+    var my_url="https://www.7idu.com/bd";
+    var url="https://open.weixin.qq.com/connect/oauth2/authorize?appid="+appid+"&redirect_uri="+my_url+"&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect";
+    var code=getQueryString("code");
+    if (code==null) {
+        location.href = url;
+        code=getQueryString("code");
+    }
+    alert(code);
+    // $.get("http:127.0.0.1",{"code":code},function (data) {
+    //     console.log(data);
+    // });
+    function auth() {
+        $.ajax({
+            url:"127.0.0.1:80/wxLoginApi/auth?code="+code,
+            success:function (data) {
+                console.info(data);
+            }
+        })
+    }
+    auth();
+
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]); return null;
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no" />
+  	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>本鼎医疗</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/swiper-3.4.2.min.css">
+    <link rel="stylesheet" href="css/common.css">
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/setFontSize.js"></script>
+ 
+  <link rel="stylesheet" href="css/lhPhone.css">
+
+  <style type="text/css">
+<!--
+body{background:#f7f7f7;}
+-->
+  </style>
+  </head>
+  <body>
+  <div class="hospital">
+	  <dl>
+		  <dt><img src="images/yyimg.gif"></dt>
+		  <dd>
+			  <h2>宜宾市第一人民医院</h2>
+			  <p><span>三级甲等</span></p>
+			  <p class="icodz"><span><img src="images/icon_dz.png"> 1.3km </span><em></em><em></em><em></em><em></em></p>
+
+			  <ul>
+				  <li>优秀科室</li>
+				  <li>优秀科室</li>
+			  </ul>
+		  </dd>
+		  <p class="xin"><img src="images/icon_dz_check.png"></p>
+		  <p class="zixun">咨询</p>
+	  </dl>
+
+
+  </div>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/swiper-3.4.2.min.js"></script>
+    <script src="js/common.js"></script>
+    <script>
+      // 调用导航相关事件
+      menuFunc();
+    </script>
+    <script>        
+      var mySwiper = new Swiper ('.swiper-container', {
+        direction: 'horizontal',
+        loop: true,
+        autoplay : 5000,
+        speed:300,
+        // 如果需要分页器
+        pagination: '.swiper-pagination',
+      })     
+    </script>
+	
+	
+	<script>
+    $(document).ready(function () {
+      var speed = 1000;
+      $('.flat-imagebox').each(function () {
+        $(this).find('.tab-list').children().first().addClass('active'),
+          $(this).find('.tab-item').children('.row').first().show().siblings().hide(),
+          $(this).find('.tab-list').children('li').on('click', function (e) {
+            var liActive = $(this).index();
+            $(this).addClass('active').siblings().removeClass('active');
+            $(this).addClass('active').closest('.flat-imagebox').find('.tab-item').children('.row').eq(liActive).fadeIn(1000).show().siblings().hide();
+            e.preventDefault();
+          });
+      });
+
+    });
+  </script>
+
+  </body>
+</html>
